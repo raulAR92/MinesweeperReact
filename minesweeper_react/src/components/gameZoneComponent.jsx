@@ -10,11 +10,12 @@ class GameZone extends Component {
   constructor() {
     super();
     let difficult = difficultLevels.filter(d => d.id === 2);
-    console.log(utils);
     const matrix = utils.calculeMatrix(difficult[0]);
     this.state = {
       difficult: difficult[0],
-      matrix: matrix
+      matrix: matrix,
+      flags: 0,
+      points: 0
     };
   }
 
@@ -36,13 +37,20 @@ class GameZone extends Component {
 
   handleClick = (i, j) => {
     let matrixToUpdate = [...this.state.matrix];
+    const { difficult } = this.state;
     let block = { ...matrixToUpdate[i][j] };
     if (!block.isMarked && !block.clicked) {
       block.clicked = true;
       matrixToUpdate[i][j] = block;
+      if (block.value === 0) {
+        matrixToUpdate = utils.showZeros(i, j, matrixToUpdate, difficult);
+      }
       this.setState(() => {
         return { matrix: matrixToUpdate };
       });
+      if (block.value === -1) {
+        this.endGame();
+      }
     }
   };
 
@@ -57,6 +65,22 @@ class GameZone extends Component {
         return { matrix: matrixToUpdate };
       });
     }
+  };
+
+  restartGame = () => {
+    let difficult = difficultLevels.filter(d => d.id === 2);
+    const matrix = utils.calculeMatrix(difficult[0]);
+    this.setState(() => {
+      return {
+        matrix,
+        difficult: difficult[0]
+      };
+    });
+  };
+
+  endGame = () => {
+    alert("you loose");
+    this.restartGame();
   };
 
   render() {

@@ -30,7 +30,9 @@ class Block extends Component {
           onClick={() => onDig(iIndex, jIndex)}
           onContextMenu={event => onFlag(iIndex, jIndex, event)}
         >
-          <span className={value === -1 ? "hide" : ""}>{value}</span>
+          <span className={value === -1 ? "hide" : ""}>
+            {value === 0 ? "" : value}
+          </span>
           <div className={value === -1 ? "" : "hide"}>
             <EntypoControllerRecord className="bomb-icon" />
           </div>

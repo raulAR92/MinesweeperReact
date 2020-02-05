@@ -4,7 +4,9 @@ const calculeMatrix = difficult => {
       if (i >= 0 && i < difficult.y) {
         for (let j = x - 1; j <= x + 1; j++) {
           if (j >= 0 && j < difficult.x && !(j === x && y === i)) {
-            matrix[i][j].value = matrix[i][j].value + 1;
+            if (matrix[i][j].value !== -1) {
+              matrix[i][j].value = matrix[i][j].value + 1;
+            }
           }
         }
       }
@@ -26,6 +28,7 @@ const calculeMatrix = difficult => {
   }
   //set mines
   let minesSet = 0;
+  let minesCords = [];
   while (minesSet < difficult.mines) {
     let x = Math.floor(Math.random() * difficult.x);
     let y = Math.floor(Math.random() * difficult.y);
@@ -47,4 +50,26 @@ const calculeMatrix = difficult => {
   return matrix;
 };
 
-export default { calculeMatrix };
+const showZeros = (y, x, matrix, difficult) => {
+  for (let i = y - 1; i <= y + 1; i++) {
+    if (i >= 0 && i < difficult.y) {
+      for (let j = x - 1; j <= x + 1; j++) {
+        if (
+          j >= 0 &&
+          j < difficult.x &&
+          !(j === x && y === i) &&
+          matrix[i][j].value !== -1 &&
+          !matrix[i][j].clicked
+        ) {
+          matrix[i][j].clicked = true;
+          if (matrix[i][j].value === 0) {
+            matrix = showZeros(i, j, matrix, difficult);
+          }
+        }
+      }
+    }
+  }
+  return matrix;
+};
+
+export default { calculeMatrix, showZeros };

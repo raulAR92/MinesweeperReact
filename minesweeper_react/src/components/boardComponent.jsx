@@ -5,7 +5,6 @@ import "./boarComponent.css";
 class Board extends Component {
   render() {
     const { matrix, onDig, onFlag } = this.props;
-    console.log(matrix);
     return (
       <div className="board">
         {matrix.map((row, i) => {
