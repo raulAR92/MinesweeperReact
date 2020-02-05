@@ -4,6 +4,8 @@ import Board from "./boardComponent";
 import difficultLevels from "../common/difficultLevels";
 import utils from "../common/utils";
 import "./gameZoneComponent.css";
+import SoundComponent from "./soundsComponent";
+import sounds from "../common/sounds";
 
 class GameZone extends Component {
   state = {};
@@ -37,7 +39,13 @@ class GameZone extends Component {
     if (!block.isMarked && !block.clicked) {
       block.clicked = true;
       matrixToUpdate[i][j] = block;
+      if (block.value !== 0 && block.value !== -1) {
+        var sound = document.getElementById(sounds.click.filename);
+        sound.play();
+      }
       if (block.value === 0) {
+        var sound = document.getElementById(sounds.revealArea.filename);
+        sound.play();
         matrixToUpdate = utils.showZeros(i, j, matrixToUpdate, difficult);
       }
       const details = utils.calculeDetails(matrixToUpdate, difficult.mines);
@@ -49,6 +57,8 @@ class GameZone extends Component {
         };
       });
       if (block.value === -1) {
+        var sound = document.getElementById(sounds.mine.filename);
+        sound.play();
         this.endGame();
       }
       this.checkIfWin(details.points, details.flags, difficult.mines);
@@ -110,6 +120,7 @@ class GameZone extends Component {
     const { difficult, matrix, flags } = this.state;
     return (
       <div className={"game-zone " + difficult.className}>
+        <SoundComponent></SoundComponent>
         <SettingsBar
           difficult={difficult}
           onDifficultChange={this.handleLevelChange}

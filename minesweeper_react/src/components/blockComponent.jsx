@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./blockComponents.css";
+import "./blockComponent.css";
 import { EntypoFlag, EntypoControllerRecord } from "react-entypo";
 
 class Block extends Component {
