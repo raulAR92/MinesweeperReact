@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./blockComponents.css";
-import { EntypoFlag, EntypoBlock } from "react-entypo";
+import { EntypoFlag, EntypoControllerRecord } from "react-entypo";
 
 class Block extends Component {
   render() {
@@ -32,7 +32,7 @@ class Block extends Component {
         >
           <span className={value === -1 ? "hide" : ""}>{value}</span>
           <div className={value === -1 ? "" : "hide"}>
-            <EntypoBlock className="bomb-icon" />
+            <EntypoControllerRecord className="bomb-icon" />
           </div>
         </div>
       );

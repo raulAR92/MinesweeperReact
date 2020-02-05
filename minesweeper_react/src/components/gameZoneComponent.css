@@ -1,0 +1,11 @@
+.game-zone {
+}
+.easy-board {
+  width: 350px;
+}
+.normal-board {
+  width: 630px;
+}
+.hard-board {
+  width: 875px;
+}

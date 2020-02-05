@@ -6,35 +6,35 @@
 }
 
 .row:nth-of-type(odd) .block.non-clicked:nth-of-type(odd) {
-  background-color: #2c756e;
+  background-color: #63c7b2;
 }
 
 .row:nth-of-type(odd) .block.non-clicked:nth-of-type(even) {
-  background-color: #35857d;
+  background-color: #80ced7;
 }
 
 .row:nth-of-type(even) .block.non-clicked:nth-of-type(odd) {
-  background-color: #35857d;
+  background-color: #80ced7;
 }
 
 .row:nth-of-type(even) .block.non-clicked:nth-of-type(even) {
-  background-color: #2c756e;
+  background-color: #63c7b2;
 }
 
 .row:nth-of-type(odd) .block.non-clicked:nth-of-type(odd):hover {
-  background-color: #b5ddd9;
+  background-color: #ccdbdc;
 }
 
 .row:nth-of-type(odd) .block.non-clicked:nth-of-type(even):hover {
-  background-color: #b5ddd9;
+  background-color: #ccdbdc;
 }
 
 .row:nth-of-type(even) .block.non-clicked:nth-of-type(odd):hover {
-  background-color: #b5ddd9;
+  background-color: #ccdbdc;
 }
 
 .row:nth-of-type(even) .block.non-clicked:nth-of-type(even):hover {
-  background-color: #b5ddd9;
+  background-color: #ccdbdc;
 }
 
 .non-clicked span,
@@ -47,12 +47,12 @@
 }
 
 .block.clicked:nth-of-type(odd) {
-  background-color: #ddc163;
+  background-color: #cbbcc8;
   transition: background-color 0.3s ease-in 0s;
 }
 
 .block.clicked:nth-of-type(even) {
-  background-color: #e0cd8c;
+  background-color: #d5c9d3;
   transition: background-color 0.3s ease-in 0s;
 }
 
