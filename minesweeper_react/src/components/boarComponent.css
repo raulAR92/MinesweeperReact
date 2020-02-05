@@ -1,3 +1,13 @@
 .row {
   height: 35px;
 }
+
+.easy-board .row {
+  height: 35px;
+}
+.normal-board .row {
+  height: 32px;
+}
+.hard-board .row {
+  height: 27px;
+}

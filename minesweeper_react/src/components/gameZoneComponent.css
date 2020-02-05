@@ -2,12 +2,38 @@
   margin: 0 auto;
   margin-top: 2em;
 }
+
 .easy-board {
-  width: 350px;
+  width: 370px;
 }
 .normal-board {
-  width: 666px;
+  width: 576px;
 }
 .hard-board {
-  width: 875px;
+  width: 675px;
+}
+
+.easy-board .block {
+  height: 35px;
+  width: 35px;
+}
+.normal-board .block {
+  height: 30px;
+  width: 30px;
+}
+.hard-board .block {
+  height: 25px;
+  width: 25px;
+}
+
+.easy-board .clicked span {
+  line-height: 35px;
+}
+
+.normal-board .clicked span {
+  line-height: 30px;
+}
+
+.hard-board .clicked span {
+  line-height: 20px;
 }

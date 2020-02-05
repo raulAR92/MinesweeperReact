@@ -28,7 +28,6 @@ const calculeMatrix = difficult => {
   }
   //set mines
   let minesSet = 0;
-  let minesCords = [];
   while (minesSet < difficult.mines) {
     let x = Math.floor(Math.random() * difficult.x);
     let y = Math.floor(Math.random() * difficult.y);
@@ -62,6 +61,7 @@ const showZeros = (y, x, matrix, difficult) => {
           !matrix[i][j].clicked
         ) {
           matrix[i][j].clicked = true;
+          matrix[i][j].isMarked = false;
           if (matrix[i][j].value === 0) {
             matrix = showZeros(i, j, matrix, difficult);
           }
@@ -72,4 +72,23 @@ const showZeros = (y, x, matrix, difficult) => {
   return matrix;
 };
 
-export default { calculeMatrix, showZeros };
+const calculeDetails = (matrix, mines) => {
+  let points = 0;
+  let notClicked = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j].isMarked) {
+        mines--;
+        if (matrix[i][j].value === -1) {
+          points++;
+        }
+      }
+      if (!matrix[i][j].clicked) {
+        notClicked++;
+      }
+    }
+  }
+  return { flags: mines, points, notClicked };
+};
+
+export default { calculeMatrix, showZeros, calculeDetails };

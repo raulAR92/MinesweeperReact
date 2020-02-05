@@ -1,0 +1,13 @@
+.flag-counter {
+  padding: 5px;
+  font-size: 20px;
+}
+
+.flag-counter-icon {
+  color: #ff0202;
+}
+
+.flag-counter-number {
+  color: white;
+  font-weight: bold;
+}

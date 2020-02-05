@@ -1,6 +1,4 @@
 .block {
-  height: 35px;
-  width: 35px;
   text-align: center;
   float: left;
 }
@@ -70,7 +68,6 @@
   transition: color 0.5s ease-in-out 0.1s;
   color: white;
   font-weight: bold;
-  line-height: 35px;
   cursor: default;
 }
 

@@ -14,19 +14,14 @@ class GameZone extends Component {
     this.state = {
       difficult: difficult[0],
       matrix: matrix,
-      flags: 0,
+      flags: difficult[0].mines,
       points: 0
     };
   }
 
   handleLevelChange = event => {
     const difficultID = parseInt(event.target.value);
-    console.log(difficultLevels);
-    let newLevel = difficultLevels.filter(d => d.id === difficultID);
-    let newMatrix = utils.calculeMatrix(newLevel[0]);
-    this.setState(() => {
-      return { difficult: newLevel[0], matrix: newMatrix };
-    });
+    this.restartGame(difficultID);
   };
 
   setBoard = matrix => {
@@ -45,35 +40,50 @@ class GameZone extends Component {
       if (block.value === 0) {
         matrixToUpdate = utils.showZeros(i, j, matrixToUpdate, difficult);
       }
+      const details = utils.calculeDetails(matrixToUpdate, difficult.mines);
       this.setState(() => {
-        return { matrix: matrixToUpdate };
+        return {
+          matrix: matrixToUpdate,
+          flags: details.flags,
+          points: details.points
+        };
       });
       if (block.value === -1) {
         this.endGame();
       }
+      this.checkIfWin(details.points, details.flags, difficult.mines);
     }
   };
 
   handleRightClick = (i, j, e) => {
     e.preventDefault();
     let matrixToUpdate = [...this.state.matrix];
+    let { difficult } = this.state;
     let block = { ...matrixToUpdate[i][j] };
     if (!block.clicked) {
       block.isMarked = !block.isMarked;
       matrixToUpdate[i][j] = block;
+      const details = utils.calculeDetails(matrixToUpdate, difficult.mines);
       this.setState(() => {
-        return { matrix: matrixToUpdate };
+        return {
+          matrix: matrixToUpdate,
+          flags: details.flags,
+          points: details.points
+        };
       });
+      this.checkIfWin(details.points, details.flags, difficult.mines);
     }
   };
 
-  restartGame = () => {
-    let difficult = difficultLevels.filter(d => d.id === 2);
+  restartGame = (difficultID = 2) => {
+    let difficult = difficultLevels.filter(d => d.id === difficultID);
     const matrix = utils.calculeMatrix(difficult[0]);
     this.setState(() => {
       return {
         matrix,
-        difficult: difficult[0]
+        difficult: difficult[0],
+        flags: difficult[0].mines,
+        points: 0
       };
     });
   };
@@ -83,14 +93,27 @@ class GameZone extends Component {
     this.restartGame();
   };
 
+  checkIfWin(points, flags, mines) {
+    if (points === mines) {
+      if (flags >= 0) {
+        alert("you win!");
+      }
+    }
+    if (points === mines - 1) {
+      if (flags >= 0) {
+        alert("you win!");
+      }
+    }
+  }
+
   render() {
-    const { difficult } = this.state;
-    const { matrix } = this.state;
+    const { difficult, matrix, flags } = this.state;
     return (
       <div className={"game-zone " + difficult.className}>
         <SettingsBar
           difficult={difficult}
           onDifficultChange={this.handleLevelChange}
+          flags={flags}
         ></SettingsBar>
         <Board
           matrix={matrix}
