@@ -10,11 +10,11 @@ const sounds = {
     filename: "click.mp3"
   },
   revealArea: {
-    route: mineSound,
+    route: zoneSound,
     filename: "show_zone.mp3"
   },
   mine: {
-    route: zoneSound,
+    route: mineSound,
     filename: "mine.mp3"
   },
   flag: {
