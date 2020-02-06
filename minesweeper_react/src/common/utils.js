@@ -91,4 +91,23 @@ const calculeDetails = (matrix, mines) => {
   return { flags: mines, points, notClicked };
 };
 
-export default { calculeMatrix, showZeros, calculeDetails };
+const getMinesCoordinates = matrix => {
+  let coordinatesArray = [];
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j].value === -1) {
+        if (!matrix[i][j].isMarked || !matrix[i][j].clicked) {
+          coordinatesArray.push({ i, j });
+        }
+      }
+    }
+  }
+  return coordinatesArray;
+};
+
+export default {
+  calculeMatrix,
+  showZeros,
+  calculeDetails,
+  getMinesCoordinates
+};

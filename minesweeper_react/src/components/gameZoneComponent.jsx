@@ -6,6 +6,7 @@ import utils from "../common/utils";
 import "./gameZoneComponent.css";
 import SoundComponent from "./soundsComponent";
 import sounds from "../common/sounds";
+import ModalComponent from "../common/modalComponent";
 
 class GameZone extends Component {
   state = {};
@@ -17,7 +18,13 @@ class GameZone extends Component {
       difficult: difficult[0],
       matrix: matrix,
       flags: difficult[0].mines,
-      points: 0
+      points: 0,
+      shake: false,
+      modalData: {
+        show: false,
+        title: "title",
+        bodyData: "body"
+      }
     };
   }
 
@@ -40,12 +47,13 @@ class GameZone extends Component {
       block.clicked = true;
       matrixToUpdate[i][j] = block;
       if (block.value !== 0 && block.value !== -1) {
-        var sound = document.getElementById(sounds.click.filename);
+        let sound = document.getElementById(sounds.click.filename);
         sound.play();
       }
       if (block.value === 0) {
-        var sound = document.getElementById(sounds.revealArea.filename);
+        let sound = document.getElementById(sounds.revealArea.filename);
         sound.play();
+        this.shakeBoard();
         matrixToUpdate = utils.showZeros(i, j, matrixToUpdate, difficult);
       }
       const details = utils.calculeDetails(matrixToUpdate, difficult.mines);
@@ -57,12 +65,33 @@ class GameZone extends Component {
         };
       });
       if (block.value === -1) {
-        var sound = document.getElementById(sounds.mine.filename);
+        this.shakeBoard();
+        let sound = document.getElementById(sounds.mine.filename);
         sound.play();
-        this.endGame();
+        this.endGame(details);
       }
-      this.checkIfWin(details.points, details.flags, difficult.mines);
+      this.checkIfWin(
+        details.points,
+        details.flags,
+        difficult.mines,
+        details.notClicked
+      );
     }
+  };
+
+  shakeBoard = () => {
+    const toggleShake = () => {
+      this.setState(() => {
+        return { shake: false };
+      });
+    };
+
+    this.setState(() => {
+      return { shake: true };
+    });
+    setTimeout(() => {
+      toggleShake();
+    }, 1000);
   };
 
   handleRightClick = (i, j, e) => {
@@ -71,6 +100,8 @@ class GameZone extends Component {
     let { difficult } = this.state;
     let block = { ...matrixToUpdate[i][j] };
     if (!block.clicked) {
+      let sound = document.getElementById(sounds.flag.filename);
+      sound.play();
       block.isMarked = !block.isMarked;
       matrixToUpdate[i][j] = block;
       const details = utils.calculeDetails(matrixToUpdate, difficult.mines);
@@ -81,45 +112,93 @@ class GameZone extends Component {
           points: details.points
         };
       });
-      this.checkIfWin(details.points, details.flags, difficult.mines);
+      this.checkIfWin(
+        details.points,
+        details.flags,
+        difficult.mines,
+        details.notClicked
+      );
     }
   };
 
-  restartGame = (difficultID = 2) => {
-    let difficult = difficultLevels.filter(d => d.id === difficultID);
-    const matrix = utils.calculeMatrix(difficult[0]);
+  restartGame = difficultID => {
+    let difficult = null;
+    if (difficultID === undefined) {
+      difficult = this.state.difficult;
+    } else {
+      difficult = difficultLevels.filter(d => d.id === difficultID)[0];
+    }
+    const matrix = utils.calculeMatrix(difficult);
     this.setState(() => {
       return {
         matrix,
-        difficult: difficult[0],
-        flags: difficult[0].mines,
+        difficult: difficult,
+        flags: difficult.mines,
         points: 0
       };
     });
   };
 
-  endGame = () => {
-    alert("you loose");
-    this.restartGame();
+  endGame = details => {
+    let { matrix } = this.state;
+    const coordinates = utils.getMinesCoordinates(matrix);
+    console.log(coordinates);
+    let showedMines = 0;
+    /*while (showedMines < coordinates.length) {
+      setTimeout(() => {
+        const coordinate = coordinates[showedMines];
+        let { matrix: matrixToUpdate } = { ...this.state.matrix };
+        matrixToUpdate[coordinate.i][coordinate.j].clicked = true;
+        this.setState(() => {
+          return { matrix: matrixToUpdate };
+        });
+        showedMines++;
+      }, 1000);
+    }*/
+    const score = "Score: " + details.points;
+    this.handleOpenModal("You Loose!", score);
   };
 
-  checkIfWin(points, flags, mines) {
+  checkIfWin(points, flags, mines, notClicked) {
+    const score = "Score: " + points;
     if (points === mines) {
       if (flags >= 0) {
-        alert("you win!");
+        this.handleOpenModal("You Win!", score);
       }
     }
-    if (points === mines - 1) {
+    if (notClicked === points) {
       if (flags >= 0) {
-        alert("you win!");
+        this.handleOpenModal("You Win!", score);
       }
     }
   }
 
+  handleCloseModal = () => {
+    let { modalData } = { ...this.state };
+    modalData.show = false;
+    this.setState({ modalData });
+    let sound = document.getElementById(sounds.loop.filename);
+    sound.pause();
+    this.restartGame();
+  };
+
+  handleOpenModal = (title, body) => {
+    let { modalData } = { ...this.state };
+    modalData.show = true;
+    modalData.title = title;
+    modalData.bodyData = body;
+    let sound = document.getElementById(sounds.loop.filename);
+    sound.loop = true;
+    sound.play();
+    this.setState({ modalData });
+  };
+
   render() {
-    const { difficult, matrix, flags } = this.state;
+    const { difficult, matrix, flags, shake, modalData } = this.state;
+    let gameZoneClasses = "game-zone";
+    gameZoneClasses += " " + difficult.className;
     return (
-      <div className={"game-zone " + difficult.className}>
+      <div className={gameZoneClasses}>
         <SoundComponent></SoundComponent>
         <SettingsBar
           difficult={difficult}
@@ -131,7 +210,14 @@ class GameZone extends Component {
           difficultClass={difficult.className}
           onDig={this.handleClick}
           onFlag={this.handleRightClick}
+          shake={shake}
         ></Board>
+        <ModalComponent
+          show={modalData.show}
+          closeButton={this.handleCloseModal}
+          title={modalData.title}
+          bodyData={modalData.bodyData}
+        ></ModalComponent>
       </div>
     );
   }

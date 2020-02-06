@@ -4,9 +4,9 @@ import "./boarComponent.css";
 
 class Board extends Component {
   render() {
-    const { matrix, onDig, onFlag } = this.props;
+    const { matrix, onDig, onFlag, shake } = this.props;
     return (
-      <div className="board">
+      <div className={"board " + (shake ? "shake" : "")}>
         {matrix.map((row, i) => {
           return (
             <div key={i} className="row">

@@ -6,6 +6,9 @@ const SoundComponent = () => {
   soundArray.push(sounds.click);
   soundArray.push(sounds.revealArea);
   soundArray.push(sounds.mine);
+  soundArray.push(sounds.flag);
+  soundArray.push(sounds.loop);
+  soundArray.push(sounds.mineShow);
   return (
     <div>
       {soundArray.map((s, i) => (
