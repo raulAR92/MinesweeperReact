@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/minesweeperreact/static/css/main.276b873d.chunk.css",
-    "main.js": "/minesweeperreact/static/js/main.fba149da.chunk.js",
-    "main.js.map": "/minesweeperreact/static/js/main.fba149da.chunk.js.map",
-    "runtime-main.js": "/minesweeperreact/static/js/runtime-main.30e82a4a.js",
-    "runtime-main.js.map": "/minesweeperreact/static/js/runtime-main.30e82a4a.js.map",
-    "static/js/2.0287c3f0.chunk.js": "/minesweeperreact/static/js/2.0287c3f0.chunk.js",
-    "static/js/2.0287c3f0.chunk.js.map": "/minesweeperreact/static/js/2.0287c3f0.chunk.js.map",
+    "main.js": "/minesweeperreact/static/js/main.0b9fc6fc.chunk.js",
+    "main.js.map": "/minesweeperreact/static/js/main.0b9fc6fc.chunk.js.map",
+    "runtime-main.js": "/minesweeperreact/static/js/runtime-main.c8845e5e.js",
+    "runtime-main.js.map": "/minesweeperreact/static/js/runtime-main.c8845e5e.js.map",
+    "static/js/2.aba24b91.chunk.js": "/minesweeperreact/static/js/2.aba24b91.chunk.js",
+    "static/js/2.aba24b91.chunk.js.map": "/minesweeperreact/static/js/2.aba24b91.chunk.js.map",
     "index.html": "/minesweeperreact/index.html",
-    "precache-manifest.500c2d9e9bfbbbf281180a112b693ad8.js": "/minesweeperreact/precache-manifest.500c2d9e9bfbbbf281180a112b693ad8.js",
+    "precache-manifest.c93569fa7641a0fde66b881480b28a6f.js": "/minesweeperreact/precache-manifest.c93569fa7641a0fde66b881480b28a6f.js",
     "service-worker.js": "/minesweeperreact/service-worker.js",
     "static/css/main.276b873d.chunk.css.map": "/minesweeperreact/static/css/main.276b873d.chunk.css.map",
-    "static/js/2.0287c3f0.chunk.js.LICENSE.txt": "/minesweeperreact/static/js/2.0287c3f0.chunk.js.LICENSE.txt",
+    "static/js/2.aba24b91.chunk.js.LICENSE.txt": "/minesweeperreact/static/js/2.aba24b91.chunk.js.LICENSE.txt",
     "static/media/click.mp3": "/minesweeperreact/static/media/click.e00e78bf.mp3",
     "static/media/flag.mp3": "/minesweeperreact/static/media/flag.d1603158.mp3",
     "static/media/mine.mp3": "/minesweeperreact/static/media/mine.ad9b69c6.mp3",
@@ -20,9 +20,9 @@
     "static/media/show_zone.mp3": "/minesweeperreact/static/media/show_zone.f142672b.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.30e82a4a.js",
-    "static/js/2.0287c3f0.chunk.js",
+    "static/js/runtime-main.c8845e5e.js",
+    "static/js/2.aba24b91.chunk.js",
     "static/css/main.276b873d.chunk.css",
-    "static/js/main.fba149da.chunk.js"
+    "static/js/main.0b9fc6fc.chunk.js"
   ]
 }
