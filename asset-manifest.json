@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/minesweeperreact/static/css/main.276b873d.chunk.css",
-    "main.js": "/minesweeperreact/static/js/main.0b9fc6fc.chunk.js",
-    "main.js.map": "/minesweeperreact/static/js/main.0b9fc6fc.chunk.js.map",
-    "runtime-main.js": "/minesweeperreact/static/js/runtime-main.c8845e5e.js",
-    "runtime-main.js.map": "/minesweeperreact/static/js/runtime-main.c8845e5e.js.map",
-    "static/js/2.aba24b91.chunk.js": "/minesweeperreact/static/js/2.aba24b91.chunk.js",
-    "static/js/2.aba24b91.chunk.js.map": "/minesweeperreact/static/js/2.aba24b91.chunk.js.map",
-    "index.html": "/minesweeperreact/index.html",
-    "precache-manifest.c93569fa7641a0fde66b881480b28a6f.js": "/minesweeperreact/precache-manifest.c93569fa7641a0fde66b881480b28a6f.js",
-    "service-worker.js": "/minesweeperreact/service-worker.js",
-    "static/css/main.276b873d.chunk.css.map": "/minesweeperreact/static/css/main.276b873d.chunk.css.map",
-    "static/js/2.aba24b91.chunk.js.LICENSE.txt": "/minesweeperreact/static/js/2.aba24b91.chunk.js.LICENSE.txt",
-    "static/media/click.mp3": "/minesweeperreact/static/media/click.e00e78bf.mp3",
-    "static/media/flag.mp3": "/minesweeperreact/static/media/flag.d1603158.mp3",
-    "static/media/mine.mp3": "/minesweeperreact/static/media/mine.ad9b69c6.mp3",
-    "static/media/mine_show.mp3": "/minesweeperreact/static/media/mine_show.ce93d662.mp3",
-    "static/media/modal_score.mp3": "/minesweeperreact/static/media/modal_score.cd6ac11e.mp3",
-    "static/media/show_zone.mp3": "/minesweeperreact/static/media/show_zone.f142672b.mp3"
+    "main.css": "/MinesweeperReact/static/css/main.276b873d.chunk.css",
+    "main.js": "/MinesweeperReact/static/js/main.25e26d1b.chunk.js",
+    "main.js.map": "/MinesweeperReact/static/js/main.25e26d1b.chunk.js.map",
+    "runtime-main.js": "/MinesweeperReact/static/js/runtime-main.b738eb37.js",
+    "runtime-main.js.map": "/MinesweeperReact/static/js/runtime-main.b738eb37.js.map",
+    "static/js/2.bef11f1e.chunk.js": "/MinesweeperReact/static/js/2.bef11f1e.chunk.js",
+    "static/js/2.bef11f1e.chunk.js.map": "/MinesweeperReact/static/js/2.bef11f1e.chunk.js.map",
+    "index.html": "/MinesweeperReact/index.html",
+    "precache-manifest.8f3fdc9b008b46dfde38c91048c57cc7.js": "/MinesweeperReact/precache-manifest.8f3fdc9b008b46dfde38c91048c57cc7.js",
+    "service-worker.js": "/MinesweeperReact/service-worker.js",
+    "static/css/main.276b873d.chunk.css.map": "/MinesweeperReact/static/css/main.276b873d.chunk.css.map",
+    "static/js/2.bef11f1e.chunk.js.LICENSE.txt": "/MinesweeperReact/static/js/2.bef11f1e.chunk.js.LICENSE.txt",
+    "static/media/click.mp3": "/MinesweeperReact/static/media/click.e00e78bf.mp3",
+    "static/media/flag.mp3": "/MinesweeperReact/static/media/flag.d1603158.mp3",
+    "static/media/mine.mp3": "/MinesweeperReact/static/media/mine.ad9b69c6.mp3",
+    "static/media/mine_show.mp3": "/MinesweeperReact/static/media/mine_show.ce93d662.mp3",
+    "static/media/modal_score.mp3": "/MinesweeperReact/static/media/modal_score.cd6ac11e.mp3",
+    "static/media/show_zone.mp3": "/MinesweeperReact/static/media/show_zone.f142672b.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.c8845e5e.js",
-    "static/js/2.aba24b91.chunk.js",
+    "static/js/runtime-main.b738eb37.js",
+    "static/js/2.bef11f1e.chunk.js",
     "static/css/main.276b873d.chunk.css",
-    "static/js/main.0b9fc6fc.chunk.js"
+    "static/js/main.25e26d1b.chunk.js"
   ]
 }
